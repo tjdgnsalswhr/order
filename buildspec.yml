@@ -3,8 +3,9 @@ version: 0.2
 env:
   variables:
     _PROJECT_NAME: "user01-order-test"
-    AWS_DEFAULT_REGION : "ap-northeast-2"
-###
+    _NAMESPACE: "hotelone"
+    
+
 phases:
   install:
     runtime-versions:
@@ -28,6 +29,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
+      - cd $_DIR_NAME
       - mvn package -Dmaven.test.skip=true
       - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$_PROJECT_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION  .
   post_build:
@@ -45,6 +47,7 @@ phases:
           kind: Service
           metadata:
             name: $_PROJECT_NAME
+            namespace: $_NAMESPACE
             labels:
               app: $_PROJECT_NAME
           spec:
@@ -60,6 +63,7 @@ phases:
           kind: Deployment
           metadata:
             name: $_PROJECT_NAME
+            namespace: $_NAMESPACE
             labels:
               app: $_PROJECT_NAME
           spec:
