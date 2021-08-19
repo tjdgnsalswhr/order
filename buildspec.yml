@@ -4,7 +4,7 @@ env:
   variables:
     _PROJECT_NAME: "user01-order-test"
     AWS_DEFAULT_REGION : "ap-northeast-2"
-#
+##
 phases:
   install:
     runtime-versions:
