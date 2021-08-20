@@ -19,6 +19,19 @@ public class Order {
     private Integer guest;
     private String name;
     private String status;
+    
+    
+    @PrePersist
+    public void onPrePersist()
+    {
+        try{
+            Thread.currentThread().sleep((long) (400+Math.random()*220));
+        }
+        catch(InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     @PostPersist
     public void onPostPersist(){
