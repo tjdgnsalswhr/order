@@ -4,7 +4,8 @@ import javax.persistence.*;
 import org.springframework.beans.BeanUtils;
 
 import hotelone.external.PaymentHistory;
-
+import java.lang.Math;
+import java.lang.Thread;
 import java.util.List;
 
 @Entity
