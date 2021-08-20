@@ -1,23 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: order
-  namespace: hotelone
+  name: user01-order-test
   labels:
-    app: order
+    app: user01-order-test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: order
+      app: user01-order-test
   template:
     metadata:
       labels:
-        app: order
+        app: user01-order-test
     spec:
       containers:
-        - name: order
-          image: 496278789073.dkr.ecr.ap-northeast-2.amazonaws.com/teamtwohotel2-order:latest
+        - name: user01-order-test
+          image: 879772956301.dkr.ecr.ap-northeast-2.amazonaws.com/user01-order-test:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
